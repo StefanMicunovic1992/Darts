@@ -1,11 +1,17 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
+import undoable from "redux-undo";
 
 const counterSlice = createSlice({
     name: 'counter',
-    initialState: {counter:1},
+    initialState: {counter:[]},
     reducers:{
-        increment(state, action) {
-            state.counter++;
+        add(state, action) {
+            state.counter.push({
+                id:action.payload.id,
+                name:action.payload.name,
+                point:action.payload.point,
+                hits:action.payload.hits,
+            })
         }
     }
 })
