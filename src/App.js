@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CreatePlayer from "./components/CreatePlayer/CreatePlayer.jsx";
-import Game from "./components/Game/Game.jsx";
+import CreatePlayer from "./components/create-player/CreatePlayer.jsx";
+import Game from "./components/game/Game.jsx";
 
 
 function App() {
