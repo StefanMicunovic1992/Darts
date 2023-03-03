@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import './style/OnePlayer.css'
 
@@ -6,52 +6,54 @@ function OnePlayer(props) {
 
   const gameState = useSelector((state) => state.game);
 
+const [isCurrentPlayer, setIsCurrentPlayer] = useState()
 
-
-  useEffect(()=>{
-console.log(gameState)
-  },[gameState])
-
-  const checkValue = (data,number) => {
-    
-      
-      if(data/number === 3){
-        return 3
-      }else if(data/number === 2){
-        return 2
-      }else if(data/number === 1){
-        return 1
+  const renderNumberOfHitsPerField = (data,num) => {
+          
+      if(data/num === 3){
+        return 
+      }else if(data/num === 2){
+        return '/'
+      }else if(data/num === 1){
+        return '/ /'
       }else{
-        return 0
+        return '/ / /'
       }
+  }
+
+  const setImageOfNumberOfHits = () =>{
+    if(props.player.id === gameState.present.currentPlayer){
+      return <img src="./img/dart-arrow.png" alt="arrow" className='arrow'/>
+    }
   }
   return (
     <div className='onePlayer'>
+      { setImageOfNumberOfHits()}
         {
           <table>
           <tr>
             <th>{props.player.name} : {props.player.point}</th>
           </tr>
           <tr>
-            <th>{checkValue(props.player.point15,15)}</th>
+            <th>15 : {renderNumberOfHitsPerField(props.player.point15,15)}</th>
           </tr>
           <tr>
-            <th>{checkValue(props.player.point16,16)}</th>
+            <th>16 : {renderNumberOfHitsPerField(props.player.point16,16)}</th>
           </tr>
           <tr>
-            <th>{checkValue(props.player.point17,17)}</th>
+            <th>17 : {renderNumberOfHitsPerField(props.player.point17,17)}</th>
           </tr>
           <tr>
-            <th>{checkValue(props.player.point18,18)}</th>
+            <th>18 : {renderNumberOfHitsPerField(props.player.point18,18)}</th>
           </tr>
           <tr>
-            <th>{checkValue(props.player.point19,19)}</th>
+            <th>19 : {renderNumberOfHitsPerField(props.player.point19,19)}</th>
           </tr>
           <tr>
-            <th>{checkValue(props.player.point20,20)}</th>
+            <th>20 : {renderNumberOfHitsPerField(props.player.point20,20)}</th>
           </tr>
           <tr>
-            <th>{checkValue(props.player.bull,50)}</th>
+            <th>Bull : {renderNumberOfHitsPerField(props.player.bull,50)}</th>
           </tr>
         </table>
         }

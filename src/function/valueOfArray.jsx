@@ -1,4 +1,5 @@
-const valueOfArray = (data, id) => {
+const valueOfArray = (currentPlayer, id) => {
+console.log(currentPlayer)
   if (
     id.indexOf("15") > -1 ||
     id.indexOf("16") > -1 ||
@@ -13,61 +14,62 @@ const valueOfArray = (data, id) => {
     let valueOfId = valueOfIdFnc(id, numberInId);
     
 
-    console.log(data);
+    
 
     // eslint-disable-next-line default-case
     switch (+numberInId) {
       case 15: {
-        const resultOfChacking = checkValue(data.player[0].point15, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.point15, valueOfId, numberInId) 
         return {
             valueOfId,
             resultOfChacking
         }
       }
       case 16: {
-        const resultOfChacking = checkValue(data.player[0].point15, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.point16, valueOfId, numberInId) 
         return {
             valueOfId,
             resultOfChacking
         }
       }
       case 17: {
-        const resultOfChacking = checkValue(data.player[0].point15, valueOfId, numberInId) 
+        console.log('ulazi u 17')
+        const resultOfChacking = checkValue(currentPlayer.point17, valueOfId, numberInId) 
         return {
             valueOfId,
             resultOfChacking
         }
       }
       case 18: {
-        const resultOfChacking = checkValue(data.player[0].point15, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.point18, valueOfId, numberInId) 
         return {
             valueOfId,
             resultOfChacking
         }
       }
       case 19: {
-        const resultOfChacking = checkValue(data.player[0].point15, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.point19, valueOfId, numberInId) 
         return {
             valueOfId,
             resultOfChacking
         }
       }
       case 20:{
-        const resultOfChacking = checkValue(data.player[0].point20, valueOfId, numberInId)
+        const resultOfChacking = checkValue(currentPlayer.point20, valueOfId, numberInId)
         return {
             valueOfId,
             resultOfChacking
         }
       }
       case 25:{
-        const resultOfChacking = checkValue(data.player[0].bull, valueOfId, numberInId)
+        const resultOfChacking = checkValue(currentPlayer.bull, valueOfId, numberInId)
         return {
             valueOfId,
             resultOfChacking
         }
       }
       case 50:{
-        const resultOfChacking = checkValue(data.player[0].bull, valueOfId, numberInId)
+        const resultOfChacking = checkValue(currentPlayer.bull, valueOfId, numberInId)
         return {
             valueOfId,
             resultOfChacking
@@ -76,7 +78,7 @@ const valueOfArray = (data, id) => {
     }
   } else {
   }
-  console.log(data);
+  
 };
 
 const valueOfIdFnc = (id, numberInId) => {
@@ -93,11 +95,46 @@ const valueOfIdFnc = (id, numberInId) => {
   }
 };
 
-const checkValue = (array, valueOfId, numberInId) => {
-    if(array >= valueOfId){
-        return true
-    }else if(array < valueOfId){
-        console.log(array - valueOfId)
+const checkValue = (valueInStore, valueOfId, numberInId) => {
+  
+  let hendler;
+  
+    if(valueInStore >= valueOfId){
+      hendler = 'currentPlayer';
+      const valueForCurrentPlayer = valueOfId
+        return {
+          hendler,
+          valueForCurrentPlayer
+        };
+    }else if(valueInStore < valueOfId){
+      const valueForCurrentPlayer = numberInId*(valueInStore/numberInId)
+        
+        if(valueInStore/numberInId === 1){
+          const valueForOtherPlayer = valueOfId - numberInId
+          
+          hendler = 'combined';
+          return {
+            hendler,
+            valueForOtherPlayer,
+            valueForCurrentPlayer
+          }
+        }else if(valueInStore/numberInId === 2){
+          const valueForOtherPlayer = valueOfId - (numberInId*2);
+          hendler = 'combined';
+          return {
+            hendler,
+            valueForOtherPlayer,
+            valueForCurrentPlayer
+          }
+        }else if(valueInStore/numberInId === 0){
+          const valueForOtherPlayer = valueOfId;
+          
+          hendler = 'otherPlayer'; 
+          return{ 
+            hendler,
+            valueForOtherPlayer
+          }
+        }
     }
 }
 

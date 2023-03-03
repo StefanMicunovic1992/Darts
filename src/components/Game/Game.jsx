@@ -5,9 +5,13 @@ import './style/Game.css'
 
 function Game() {
 
+  const onDashboardHit = (value) => {
+    console.log('on dashbord hit', value)
+  }
+
   return (
     <section id='gamePage'>
-      <Dartboard />
+      <Dartboard onDashboardHit={onDashboardHit}/>
       <TableForResult />
     </section>
   )
