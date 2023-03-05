@@ -4,7 +4,7 @@ import { isEqual } from "lodash";
 
 const gameSlice = createSlice({
   name: "game",
-  initialState: { player: [], currentPlayer: "", winner: "", numberOfShot: 1 },
+  initialState: { player: [], currentPlayer: "", winner: "", numberOfShot: 3 },
   reducers: {
     setPlayer: (state, action) => {
       state.player.push({

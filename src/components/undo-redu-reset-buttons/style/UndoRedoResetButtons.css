@@ -1,0 +1,17 @@
+#UndoRedoResetButtons {
+  background-color: chartreuse;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+#UndoRedoResetButtons button {
+  width: 20%;
+  height: 30%;
+  border-radius: 5px;
+}
+#UndoRedoResetButtons button:hover {
+  transition: 0.3s;
+  border: 1px solid turquoise;
+}/*# sourceMappingURL=UndoRedoResetButtons.css.map */

@@ -1,0 +1,24 @@
+#ArrowPresentation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+}
+#ArrowPresentation #nextPlayerDiv {
+  width: 20%;
+  background-color: black;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#ArrowPresentation #arrowImg {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}/*# sourceMappingURL=ArrowPresentation.css.map */
