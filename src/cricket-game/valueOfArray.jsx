@@ -1,4 +1,6 @@
 const valueOfArray = (currentPlayer, id) => {
+  console.log("valueOfArray", currentPlayer)
+  console.log("ID", id)
 
   if (
     id.indexOf("15") > -1 ||
@@ -11,77 +13,75 @@ const valueOfArray = (currentPlayer, id) => {
     id.indexOf("50") > -1
   ) {
     const numberInId = id.substring(1);
-    let valueOfId = valueOfIdFnc(id, numberInId);
-    
-
-    
+    let valueOfIdConvertToPoint = valueOfIdConvertToPointFnc(id, numberInId);
 
     // eslint-disable-next-line default-case
     switch (+numberInId) {
       case 15: {
-        const resultOfChacking = checkValue(currentPlayer.point15, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.point15, valueOfIdConvertToPoint, numberInId) 
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
       case 16: {
-        const resultOfChacking = checkValue(currentPlayer.point16, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.point16, valueOfIdConvertToPoint, numberInId) 
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
       case 17: {
         console.log('ulazi u 17')
-        const resultOfChacking = checkValue(currentPlayer.point17, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.point17, valueOfIdConvertToPoint, numberInId) 
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
       case 18: {
-        const resultOfChacking = checkValue(currentPlayer.point18, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.point18, valueOfIdConvertToPoint, numberInId) 
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
       case 19: {
-        const resultOfChacking = checkValue(currentPlayer.point19, valueOfId, numberInId) 
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.point19, valueOfIdConvertToPoint, numberInId) 
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
       case 20:{
-        const resultOfChacking = checkValue(currentPlayer.point20, valueOfId, numberInId)
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.point20, valueOfIdConvertToPoint, numberInId)
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
       case 25:{
-        const resultOfChacking = checkValue(currentPlayer.bull, valueOfId, numberInId)
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.bull, valueOfIdConvertToPoint, numberInId)
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
       case 50:{
-        const resultOfChacking = checkValue(currentPlayer.bull, valueOfId, numberInId)
+        const resultOfChacking = checkValue(currentPlayer.cricketPoints.bull, valueOfIdConvertToPoint, numberInId)
         return {
-            valueOfId,
+            valueOfId: valueOfIdConvertToPoint,
             resultOfChacking
         }
       }
     }
   } else {
+    return false;
   }
   
 };
 
-const valueOfIdFnc = (id, numberInId) => {
+const valueOfIdConvertToPointFnc = (id, numberInId) => {
   
   if (id.indexOf("s") > -1) {
     return +numberInId;
@@ -90,7 +90,6 @@ const valueOfIdFnc = (id, numberInId) => {
   } else if (id.indexOf("t") > -1) {
     return +(numberInId * 3);
   } else if (id.indexOf("b") > -1) {
-    console.log('ulazi u b')
     return 50;
   } else if (id.indexOf("o") > -1) {
     return 25;

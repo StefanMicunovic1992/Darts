@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import "./style/OnePlayer.css";
 
 function OnePlayer(props) {
-  const gameState = useSelector((state) => state.game);
 
   const renderNumberOfHitsPerField = (data, num) => {
     if (num !== 50) {
@@ -27,12 +25,6 @@ function OnePlayer(props) {
     }
   };
 
-  const setImageOfNumberOfHits = () => {
-    if (props.player.id === gameState.present.currentPlayer) {
-      return <img src="./img/dart-arrow.png" alt="arrow" className="arrow" />;
-    }
-  };
-
   return (
     <div className="onePlayer">
       <div className="resultPerPlayer">
@@ -45,7 +37,6 @@ function OnePlayer(props) {
         {renderNumberOfHitsPerField(props.player.point20, 20)}
         {renderNumberOfHitsPerField(props.player.bull, 50)}
       </div>
-      <div className="arrows">{setImageOfNumberOfHits()}</div>
     </div>
   );
 }

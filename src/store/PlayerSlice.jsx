@@ -4,133 +4,73 @@ import { isEqual } from "lodash";
 
 const gameSlice = createSlice({
   name: "game",
-  initialState: { player: [],
-                  currentPlayer:'',
-                  numberOfHitsForCurrentPlayer:3 },
+  initialState: { player: [], currentPlayer: "", winner: "", numberOfShot: 1 },
   reducers: {
     setPlayer: (state, action) => {
       state.player.push({
         id: action.payload.id,
         name: action.payload.name,
         point: action.payload.point,
-        point15: action.payload.point15,
-        point16: action.payload.point16,
-        point17: action.payload.point17,
-        point18: action.payload.point18,
-        point19: action.payload.point19,
-        point20: action.payload.point20,
-        bull: action.payload.bull,
+        cricketPoints: {
+          point15: action.payload.point15,
+          point16: action.payload.point16,
+          point17: action.payload.point17,
+          point18: action.payload.point18,
+          point19: action.payload.point19,
+          point20: action.payload.point20,
+          bull: action.payload.bull,
+        },
       });
     },
-    setCurrentPlayer:(state, action) => {
-      console.log(action.payload)
-      state.currentPlayer = action.payload
+    setNumberOfShot: (state, action) => {
+      state.numberOfShot = action.payload;
     },
-    setNumberOfHitsForCurrentPlayer:(state, action) => {
-      state.numberOfHitsForCurrentPlayer = action.payload
+    setWinner: (state, action) => {
+      state.winner = action.payload;
+    },
+    setCurrentPlayer: (state, action) => {
+      state.currentPlayer = action.payload;
     },
     setHits: (state, action) => {
-      const hitValur = action.payload.idOfField.substring(1)
-      state.player.map(element => {
-        if(element.id === action.payload.idOfCurrentPlayer){
+      const hitValue = action.payload.idOfField.substring(1);
+      state.player.map((element) => {
+        if (element.id === action.payload.idOfCurrentPlayer) {
           // eslint-disable-next-line default-case
-          switch(hitValur){
-            case '15':{
-              element.point15 = element.point15 - action.payload.resultForCurrentPlayer;
-              break;
-            }
-            case '16':{
-              element.point16 = element.point16 - action.payload.resultForCurrentPlayer;
-              break;
-            }
-            case '17':{
-              element.point17 = element.point17 - action.payload.resultForCurrentPlayer;
-              break;
-            }
-            case '18':{
-              element.point18 = element.point18 - action.payload.resultForCurrentPlayer;
-              break;
-            }
-            case '19':{
-              element.point19 = element.point19 - action.payload.resultForCurrentPlayer;
-              break;
-            }
-            case '20':{
-              element.point20 = element.point20 - action.payload.resultForCurrentPlayer;
-              break;
-            }
-            case '25':{
-              element.bull = element.bull - action.payload.resultForCurrentPlayer;
-              break;
-            }
-            case '50':{
-              element.bull = element.bull - action.payload.resultForCurrentPlayer;
-              break;    
-            }
+          switch (hitValue) {
+            case "15":
+            case "16":
+            case "17":
+            case "18":
+            case "19":
+            case "20":
+            case "25":
+            case "50":
+              element.cricketPoints[`point${hitValue}`] -=
+                action.payload.resultForCurrentPlayer;
           }
         }
-      })
+      });
     },
     setHitsForOtherPlayer: (state, action) => {
-      
-      const hitValur = action.payload.idOfField.substring(1)
-      state.player.map(element => {
-        
-        if(element.id !== action.payload.idOfCurrentPlayer){
+      const hitValue = action.payload.idOfField.substring(1);
+      state.player.map((element) => {
+        if (element.id !== action.payload.idOfCurrentPlayer) {
           // eslint-disable-next-line default-case
-          switch(hitValur){
-            case '15':{
-              if(element.point15 < 45 && element.point15 > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;
-            }
-            case '16':{
-              if(element.point16 < 48 && element.point16 > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;
-            }
-            case '17':{
-              if(element.point17 < 51 && element.point17 > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;
-            }
-            case '18':{
-              if(element.point18 < 54 && element.point18 > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;
-            }
-            case '19':{
-              if(element.point19 < 57 && element.point19 > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;
-            }
-            case '20':{
-              if(element.point20 < 60 && element.point20 > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;
-            }
-            case '50':{
-              if(element.bull < 75 && element.bull > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;
-            }
-            case '25':{
-              if(element.bull < 75 && element.bull > 0){
-                element.point += action.payload.resultForOtherPlayer
-              }
-              break;    
-            }
+          switch (hitValue) {
+            case "15":
+            case "16":
+            case "17":
+            case "18":
+            case "19":
+            case "20":
+            case "25":
+            case "50":
+              element.cricketPoints[`point${hitValue}`] +=
+                action.payload.resultForCurrentPlayer;
           }
         }
-      })
-    }
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addDefaultCase(undoablePlayerSlice.reducer);
@@ -150,7 +90,15 @@ const store = configureStore({
   reducer,
 });
 
-export const { setPlayer, setHits, setHitsForOtherPlayer, setCurrentPlayer, setNumberOfHitsForCurrentPlayer } = gameSlice.actions;
+export const {
+  setPlayer,
+  setHits,
+  setHitsForOtherPlayer,
+  setCurrentPlayer,
+  setNumberOfHitsForCurrentPlayer,
+  setWinner,
+  setNumberOfShot,
+} = gameSlice.actions;
 
 store.dispatch(ActionCreators.undo());
 store.dispatch(ActionCreators.redo());

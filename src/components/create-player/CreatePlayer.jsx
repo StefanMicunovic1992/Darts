@@ -50,11 +50,7 @@ function CreatePlayer() {
 
   const handleChangeInputName = (e) => setInputNameValue(e.target.value);
 
-  const playGameFnc = () => {
-    //ovo je mesto gde cu da dodelim poene svakom igracu
-
-    history("/game");
-  };
+  const playGameFnc = () => { history("/game"); };
 
   return (
     <section id="createPlayer">

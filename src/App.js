@@ -2,8 +2,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CreatePlayer from "./components/create-player/CreatePlayer.jsx";
 import Game from "./components/game/Game.jsx";
-import { divide } from "lodash";
-
 
 function App() {
   return (
