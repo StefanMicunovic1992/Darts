@@ -1,8 +1,7 @@
 #dartboard {
-  width: 50vw;
+  width: 100%;
   height: 100vh;
 }
 #dartboard svg {
   cursor: pointer;
-  background-color: azure;
 }/*# sourceMappingURL=Dartboard.css.map */

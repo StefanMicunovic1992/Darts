@@ -1,12 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./style/Dartboard.css";
-import { setHits, setHitsForOtherPlayer, setCurrentPlayer,setNumberOfHitsForCurrentPlayer } from "../../store/PlayerSlice";
+import {
+  setHits,
+  setHitsForOtherPlayer,
+  setCurrentPlayer,
+  setNumberOfHitsForCurrentPlayer,
+} from "../../store/PlayerSlice";
 import { useDispatch, useSelector } from "react-redux";
 import valueOfArray from "../../function/valueOfArray";
+import checkWinner from "../../function/checkWinner";
+import { useNavigate } from "react-router-dom";
 
 function Dartboard(props) {
   const gameState = useSelector((state) => state.game);
   const dispatch = useDispatch();
+  const history = useNavigate();
 
   const [counterForPlayer, setCounterForPlayer] = useState(0);
   const [counterForHits, setCounterForHits] = useState(1);
@@ -14,15 +22,37 @@ function Dartboard(props) {
   const currentPlayer = gameState.present.player[counterForPlayer];
 
   useEffect(() => {
+    checkNumberOfPlayer();
+  }, []);
+  
+  const checkNumberOfPlayer = () => {
+    console.log(gameState.present.player.length)
+    console.log('ulazi u proveru')
+    if (gameState.present.player.length < 2) {
+      console.log("radi provera korisnika, ulazi u if");
+      window.location.reload();
+      history("/");
+    } else {
+      console.log("radi provera korisnika, ulazi u else");
+    }
+  };
+
+  useEffect(() => {
+    dispatch(setNumberOfHitsForCurrentPlayer(counterForHits));
+  }, [gameState]);
+
+  useEffect(() => {
+    console.log("trenutni igrac", currentPlayer);
     dispatch(setCurrentPlayer(currentPlayer.id));
   }, [currentPlayer]);
 
   useEffect(() => {
-    dispatch(setNumberOfHitsForCurrentPlayer(counterForHits));
+    checkWinner(gameState, currentPlayer);
   }, [counterForHits]);
 
-  const onBoardHit2 = (e) => {
-    // handleHitNumber()
+  const onBoardHit = (e) => {
+    console.log(counterForHits);
+    //  handleHitNumber()
     // switchCurrentPlayer()
     if (counterForHits === 3) {
       setCounterForHits(1);
@@ -38,11 +68,15 @@ function Dartboard(props) {
     const result = valueOfArray(currentPlayer, e.target.id);
 
     const idOfField = e.target.id;
-    // const resultOfHits = result.valueOfId;
-
     const idOfCurrentPlayer = currentPlayer.id;
+
+    sendDataToDispatch(result, idOfField, idOfCurrentPlayer);
+  };
+
+  const sendDataToDispatch = async (result, idOfField, idOfCurrentPlayer) => {
     const resultForOtherPlayer = result.resultOfChacking.valueForOtherPlayer;
-    const resultForCurrentPlayer = result.resultOfChacking.valueForCurrentPlayer;
+    const resultForCurrentPlayer =
+      result.resultOfChacking.valueForCurrentPlayer;
 
     if (result.resultOfChacking.hendler === "currentPlayer") {
       dispatch(
@@ -57,7 +91,6 @@ function Dartboard(props) {
         })
       );
     } else if (result.resultOfChacking.hendler === "combined") {
-      console.log(result);
       dispatch(
         setHits({ idOfField, resultForCurrentPlayer, idOfCurrentPlayer })
       );
@@ -74,7 +107,7 @@ function Dartboard(props) {
   return (
     <section id="dartboard">
       <svg
-        onClick={(e) => onBoardHit2(e)}
+        onClick={(e) => onBoardHit(e)}
         // onClick={(e) => props.onDashboardHit(e)}
         data-v-6310035b=""
         id="dartboard"

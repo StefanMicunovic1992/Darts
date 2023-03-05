@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style/CreatePlayer.css";
 import { useSelector, useDispatch } from "react-redux";
 import { ActionCreators } from "redux-undo";
@@ -51,44 +51,45 @@ function CreatePlayer() {
   const handleChangeInputName = (e) => setInputNameValue(e.target.value);
 
   const playGameFnc = () => {
-
     //ovo je mesto gde cu da dodelim poene svakom igracu
-    
-    history("/game")};
+
+    history("/game");
+  };
 
   return (
-    <div>
+    <section id="createPlayer">
       <h1>DARTS</h1>
-      <div>
-        <input
-          type="text"
-          name="player"
-          id="player"
-          placeholder="player name"
-          value={inputNameValue}
-          onChange={handleChangeInputName}
-        />
-        {players.length < MAX_PLAYER_FOR_GAME && (
-          <button onClick={createPlayerFnc}>ADD</button>
-        )}
+      <div id="inputAndBtn">
+        <h2>Create players</h2>
+        <div id="inputDiv">
+          <input
+            type="text"
+            name="player"
+            id="player"
+            placeholder="player name"
+            value={inputNameValue}
+            onChange={handleChangeInputName}
+          />
+          {players.length < MAX_PLAYER_FOR_GAME && (
+            <button onClick={createPlayerFnc}>ADD</button>
+          )}
+        </div>
+        <div id="renderPlayersName">
+          {players?.map((elem) => (
+            <h2 key={elem.id}>{elem.name}</h2>
+          ))}
+        </div>
+        <div id="undoRedoBtn">
+          <button onClick={undoFnc} disabled={!gameState.past.length}>
+            Undo
+          </button>
+          <button onClick={redoFnc} disabled={!gameState.future.length}>
+            Redo
+          </button>
+        </div>
+        {players.length >= MIN_PLAYER_FOR_GAME && <button onClick={playGameFnc} id='startGameBtn'>start game</button>}
       </div>
-      <div>
-        {players?.map((elem) => (
-          <h2 key={elem.id}>{elem.name}</h2>
-        ))}
-      </div>
-      {players.length >= MIN_PLAYER_FOR_GAME ? (
-        <button onClick={playGameFnc}>start game</button>
-      ) : (
-        ""
-      )}
-      <button onClick={undoFnc} disabled={!gameState.past.length}>
-        Undo
-      </button>
-      <button onClick={redoFnc} disabled={!gameState.future.length}>
-        Redo
-      </button>
-    </div>
+    </section>
   );
 }
 

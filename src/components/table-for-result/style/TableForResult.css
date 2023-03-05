@@ -1,14 +1,9 @@
 #tableForResult {
-  width: 50vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
-}
-#tableForResult table {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
 }/*# sourceMappingURL=TableForResult.css.map */

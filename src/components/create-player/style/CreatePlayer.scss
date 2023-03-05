@@ -1,3 +1,64 @@
-h1{
-    text-align: center;
+#createPlayer{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../../../../public/img/background.jpg');
+    background-size: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    h1{
+        text-align: center;
+        font-size: 5rem;
+    }
+    #inputAndBtn{
+        background-color: rgba($color: #675c5c, $alpha: 0.5);
+        width: 500px;
+        height: 400px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        #inputDiv{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            input{
+                width: 50%;
+                padding: 5px;
+                border: none;
+                border-radius: 5px;
+            }
+            button{
+                width: 25%;
+                border-radius: 5px;
+                border: none;
+            }
+        }
+        #renderPlayersName{
+            width: 80%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        #undoRedoBtn{
+            width: 80%;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            button{
+                height: 25px;
+                width: 35%;
+            }
+        }
+        #startGameBtn{
+            height: 40px;
+            width: 50%;
+        }
+    }
 }
+

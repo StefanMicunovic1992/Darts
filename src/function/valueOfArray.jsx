@@ -1,5 +1,5 @@
 const valueOfArray = (currentPlayer, id) => {
-console.log(currentPlayer)
+
   if (
     id.indexOf("15") > -1 ||
     id.indexOf("16") > -1 ||
@@ -7,8 +7,8 @@ console.log(currentPlayer)
     id.indexOf("18") > -1 ||
     id.indexOf("19") > -1 ||
     id.indexOf("20") > -1 ||
-    id.indexOf("Bull") > -1 ||
-    id.indexOf("Outer") > -1
+    id.indexOf("25") > -1 ||
+    id.indexOf("50") > -1
   ) {
     const numberInId = id.substring(1);
     let valueOfId = valueOfIdFnc(id, numberInId);
@@ -82,6 +82,7 @@ console.log(currentPlayer)
 };
 
 const valueOfIdFnc = (id, numberInId) => {
+  
   if (id.indexOf("s") > -1) {
     return +numberInId;
   } else if (id.indexOf("d") > -1) {
@@ -89,6 +90,7 @@ const valueOfIdFnc = (id, numberInId) => {
   } else if (id.indexOf("t") > -1) {
     return +(numberInId * 3);
   } else if (id.indexOf("b") > -1) {
+    console.log('ulazi u b')
     return 50;
   } else if (id.indexOf("o") > -1) {
     return 25;

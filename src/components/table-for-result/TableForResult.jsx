@@ -6,9 +6,6 @@ import OnePlayer from "../one-player/OnePlayer";
 function TableForResult() {
   const gameState = useSelector((state) => state.game);
 
-  useEffect(() => {
-    console.log(gameState);
-  }, [gameState]);
   return (
     <section id="tableForResult">
       {gameState.present.player?.map((player) => (

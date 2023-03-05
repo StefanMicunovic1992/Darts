@@ -9,7 +9,6 @@ const gameSlice = createSlice({
                   numberOfHitsForCurrentPlayer:3 },
   reducers: {
     setPlayer: (state, action) => {
-      console.log(state.player);
       state.player.push({
         id: action.payload.id,
         name: action.payload.name,
@@ -31,8 +30,6 @@ const gameSlice = createSlice({
       state.numberOfHitsForCurrentPlayer = action.payload
     },
     setHits: (state, action) => {
-      console.log('ulazi u slice')
-      console.log(action.payload.resultForCurrentPlayer)
       const hitValur = action.payload.idOfField.substring(1)
       state.player.map(element => {
         if(element.id === action.payload.idOfCurrentPlayer){
@@ -40,33 +37,33 @@ const gameSlice = createSlice({
           switch(hitValur){
             case '15':{
               element.point15 = element.point15 - action.payload.resultForCurrentPlayer;
-              break;    
+              break;
             }
             case '16':{
               element.point16 = element.point16 - action.payload.resultForCurrentPlayer;
-              break;    
+              break;
             }
             case '17':{
               element.point17 = element.point17 - action.payload.resultForCurrentPlayer;
-              break;    
+              break;
             }
             case '18':{
               element.point18 = element.point18 - action.payload.resultForCurrentPlayer;
-              break;    
+              break;
             }
             case '19':{
               element.point19 = element.point19 - action.payload.resultForCurrentPlayer;
-              break;    
+              break;
             }
             case '20':{
               element.point20 = element.point20 - action.payload.resultForCurrentPlayer;
-              break;    
+              break;
             }
-            case 'ull':{
+            case '25':{
               element.bull = element.bull - action.payload.resultForCurrentPlayer;
-              break;    
+              break;
             }
-            case 'uter':{
+            case '50':{
               element.bull = element.bull - action.payload.resultForCurrentPlayer;
               break;    
             }
@@ -75,10 +72,10 @@ const gameSlice = createSlice({
       })
     },
     setHitsForOtherPlayer: (state, action) => {
-      console.log(action.payload)
+      
       const hitValur = action.payload.idOfField.substring(1)
       state.player.map(element => {
-        console.log('ulazi u map')
+        
         if(element.id !== action.payload.idOfCurrentPlayer){
           // eslint-disable-next-line default-case
           switch(hitValur){
@@ -92,7 +89,7 @@ const gameSlice = createSlice({
               if(element.point16 < 48 && element.point16 > 0){
                 element.point += action.payload.resultForOtherPlayer
               }
-              break;    
+              break;
             }
             case '17':{
               if(element.point17 < 51 && element.point17 > 0){
