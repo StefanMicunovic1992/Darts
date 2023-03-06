@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import "./style/PlayerResult.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 function PlayerResult(props) {
   const currentPlayer = useSelector((state) => state.game.present.currentPlayer);
@@ -18,17 +20,17 @@ function PlayerResult(props) {
       if (data / num === 3) {
         return <span>{num} : </span>;
       } else if (data / num === 2) {
-        return <span>{num} /</span>;
+        return <span>{num} : <FontAwesomeIcon icon={faCheck} /></span>;
       } else if (data / num === 1) {
-        return <span>{num} / /</span>;
+        return <span>{num} : <FontAwesomeIcon icon={faCheck} /> <FontAwesomeIcon icon={faCheck} /></span>;
       } else {
-        return <span className="green">{num} : / / /</span>;
+        return <span className="blue">{num} : <FontAwesomeIcon icon={faCheck} /> <FontAwesomeIcon icon={faCheck} /> <FontAwesomeIcon icon={faCheck} /></span>;
       }
     } else {
       if (data <= 50 && data > 0) {
-        return <span>Bull : /</span>;
+        return <span>{num} : <FontAwesomeIcon icon={faCheck} /></span>;
       } else if (data === 0) {
-        return <span className="green">Bull : / /</span>;
+        return <span className="blue">Bull : <FontAwesomeIcon icon={faCheck} /><FontAwesomeIcon icon={faCheck} /></span>;
       }else if(data === 75){
         return <span>Bull : </span>;
       }

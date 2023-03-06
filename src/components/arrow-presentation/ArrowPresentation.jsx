@@ -4,6 +4,7 @@ import './style/ArrowPresentation.css'
 import { setCurrentPlayer, resetNumberOfShot} from "../../store/PlayerSlice";
 
 function ArrowPresentation() {
+  
   const numberOfShot = useSelector((state) => state.game.present.numberOfShot);
   const gameState = useSelector((state) => state.game);
   const dispatch = useDispatch();
@@ -14,10 +15,6 @@ function ArrowPresentation() {
   const arrows = Array.from({ length: numberOfShot });
 
   dispatch(setCurrentPlayer(currentPlayer))
-  // useEffect(()=>{
-  //   console.log(currentPlayer)
-  // },[])
-
 
   useEffect(()=>{
     console.log(currentPlayer)

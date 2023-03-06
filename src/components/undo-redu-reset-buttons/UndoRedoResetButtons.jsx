@@ -11,13 +11,15 @@ function UndoRedoResetButtons() {
   const history = useNavigate();
   const dispatch = useDispatch();
 
+  console.log(gameState)
+
   const resetGame = () => {
       window.location.reload();
       history("/");
   }
 
   const undoFnc2 = () => {
-    if(gameState.past.length > 3){
+    if(gameState.past.length > 5){
       dispatch(ActionCreators.jump(-3));
     }
   };

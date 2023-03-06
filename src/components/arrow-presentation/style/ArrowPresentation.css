@@ -47,4 +47,46 @@
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(0, 210, 220, 0);
   }
+}
+@media (700px < width < 1000px) {
+  #ArrowPresentation {
+    border-bottom: none;
+  }
+  #ArrowPresentation #arrowImg img {
+    width: 20%;
+  }
+}
+@media (width < 700px) {
+  #ArrowPresentation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #edeef3;
+  }
+  #ArrowPresentation #nextPlayerDiv {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #ArrowPresentation #nextPlayerDiv button {
+    border: 1px solid #00d2dc;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+  }
+  #ArrowPresentation #arrowImg {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+  }
+  #ArrowPresentation #arrowImg img {
+    width: 15%;
+  }
 }/*# sourceMappingURL=ArrowPresentation.css.map */

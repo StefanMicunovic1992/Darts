@@ -1,5 +1,5 @@
 import React from "react";
-import "./style/TableForResult.css";
+import "./style/ResultTable.css";
 import { useSelector } from "react-redux";
 import ArrowPresentation from "../arrow-presentation/ArrowPresentation";
 import UndoRedoResetButtons from "../undo-redu-reset-buttons/UndoRedoResetButtons";

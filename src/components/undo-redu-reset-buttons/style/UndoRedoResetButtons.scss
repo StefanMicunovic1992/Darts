@@ -16,3 +16,10 @@
         }
     }
 }
+
+
+@media (700px < width < 1000px) {
+    #UndoRedoResetButtons{
+        border-top: none;
+    }   
+}

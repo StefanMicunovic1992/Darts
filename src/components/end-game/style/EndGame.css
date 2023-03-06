@@ -28,4 +28,29 @@
 }
 #newGame:hover {
   background-color: #06f3ff;
+}
+
+@media (700px < width < 1000px) {
+  .showDiv {
+    height: 135vh;
+  }
+  .hideDiv {
+    display: none;
+  }
+  #newGame {
+    width: 20%;
+  }
+}
+@media (width < 700px) {
+  .showDiv {
+    width: 100%;
+    height: 130vh;
+  }
+  .hideDiv {
+    display: none;
+  }
+  #newGame {
+    width: 50%;
+    height: 5%;
+  }
 }/*# sourceMappingURL=EndGame.css.map */

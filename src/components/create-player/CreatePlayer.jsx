@@ -68,7 +68,7 @@ console.log(gameState)
             type="text"
             name="player"
             id="player"
-            placeholder="player name"
+            placeholder="Player name"
             value={inputNameValue}
             onChange={handleChangeInputName}
           />

@@ -5,4 +5,23 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   background-color: #f8f8f8;
+}
+
+@media (700px < width < 1000px) {
+  #gamePage {
+    overflow-y: scroll;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+@media (width < 700px) {
+  #gamePage {
+    overflow-y: scroll;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }/*# sourceMappingURL=Game.css.map */

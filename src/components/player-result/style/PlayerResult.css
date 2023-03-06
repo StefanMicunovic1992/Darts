@@ -19,20 +19,8 @@
 .onePlayer .resultPerPlayer span {
   padding-left: 5px;
 }
-.onePlayer .resultPerPlayer .green {
-  background-color: green;
-  border-radius: 5px;
-}
-.onePlayer .arrows {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.onePlayer .arrows .arrow {
-  height: 30%;
+.onePlayer .resultPerPlayer .blue {
+  color: #00d2dc;
 }
 
 .current {
@@ -56,18 +44,58 @@
 .current .resultPerPlayer span {
   padding-left: 5px;
 }
-.current .resultPerPlayer .green {
-  background-color: green;
-  border-radius: 5px;
+.current .resultPerPlayer .blue {
+  color: #00d2dc;
 }
-.current .arrows {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+@media (700px < width < 1000px) {
+  .onePlayer {
+    height: 90%;
+    width: 20%;
+    font-size: 0.8rem;
+  }
+  .onePlayer .resultPerPlayer {
+    font-weight: 500;
+    width: 100%;
+  }
+  .current {
+    width: 20%;
+    height: 90%;
+  }
+  .current .resultPerPlayer {
+    font-weight: 500;
+    width: 100%;
+  }
 }
-.current .arrows .arrow {
-  height: 30%;
-}/*# sourceMappingURL=OnePlayer.css.map */
+@media (width < 700px) {
+  .onePlayer {
+    padding: 5px;
+    width: 40%;
+    height: 100%;
+  }
+  .onePlayer .resultPerPlayer {
+    font-weight: 400;
+    height: 100%;
+    width: 100%;
+    gap: 3%;
+    padding-left: 10px;
+  }
+  .onePlayer .resultPerPlayer span {
+    font-size: 0.8rem;
+    padding-left: 5px;
+  }
+  .current {
+    width: 40%;
+    height: 100%;
+  }
+  .current .resultPerPlayer {
+    font-weight: 400;
+    width: 100%;
+    gap: 3%;
+    padding-left: 10px;
+  }
+  .current .resultPerPlayer span {
+    padding-left: 5px;
+    font-size: 0.8rem;
+  }
+}/*# sourceMappingURL=PlayerResult.css.map */

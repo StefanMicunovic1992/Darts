@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import getCurrentPlayer from "../../store/selectors/getCurrentPlayer";
 import AwardingPointLogic from "../../cricket-game/AwardingPointLogic";
-import checkWinner from "../../cricket-game/checkWinner";
+import checkWinner from "../../cricket-game/CheckWinner";
 
 function Dartboard(props) {
 

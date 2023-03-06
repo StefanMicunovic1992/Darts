@@ -4,4 +4,11 @@
 }
 #dartboard svg {
   cursor: pointer;
+}
+
+@media (width < 700px) {
+  #dartboard {
+    margin-top: 5vh;
+    height: auto;
+  }
 }/*# sourceMappingURL=Dartboard.css.map */

@@ -2,7 +2,14 @@
   width: 100%;
   height: 100vh;
   svg{
-    // cursor: url("../../../../public/img/dart-arrow.png"),auto;
     cursor: pointer;
   }
+}
+
+
+@media ( width < 700px) {
+  #dartboard{
+    margin-top: 5vh;
+    height: auto;
+  } 
 }
