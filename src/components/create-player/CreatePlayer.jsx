@@ -73,7 +73,7 @@ console.log(gameState)
             onChange={handleChangeInputName}
           />
           {players.length < MAX_PLAYER_FOR_GAME && (
-            <button onClick={createPlayerFnc}>ADD</button>
+            <button onClick={createPlayerFnc}>Add</button>
           )}
         </div>
         <div id="renderPlayersName">
@@ -89,7 +89,7 @@ console.log(gameState)
             Redo
           </button>
         </div>
-        {players.length >= MIN_PLAYER_FOR_GAME && <button onClick={playGameFnc} id='startGameBtn'>start game</button>}
+        {players.length >= MIN_PLAYER_FOR_GAME && <button onClick={playGameFnc} id='startGameBtn'>Start game</button>}
       </div>
     </section>
   );

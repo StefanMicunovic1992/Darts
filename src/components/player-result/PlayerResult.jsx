@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import "./style/OnePlayer.css";
+import "./style/PlayerResult.css";
 
 function PlayerResult(props) {
   const currentPlayer = useSelector((state) => state.game.present.currentPlayer);

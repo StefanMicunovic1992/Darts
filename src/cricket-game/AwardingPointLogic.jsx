@@ -1,4 +1,4 @@
-const valueOfArray = (currentPlayer, id) => {
+const AwardingPointLogic = (currentPlayer, id) => {
   console.log(currentPlayer)
 
   if (
@@ -137,4 +137,4 @@ const checkValue = (valueInStore, valueOfId, numberInId) => {
     }
 }
 
-export default valueOfArray;
+export default AwardingPointLogic;

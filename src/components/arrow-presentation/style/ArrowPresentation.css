@@ -4,20 +4,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 3px solid #edeef3;
 }
 #ArrowPresentation #nextPlayerDiv {
-  width: 20%;
+  width: 25%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 #ArrowPresentation #nextPlayerDiv button {
-  width: 90%;
+  border: 1px solid #00d2dc;
+  width: 80%;
   padding: 10px;
+  font-weight: bold;
 }
 #ArrowPresentation #arrowImg {
-  width: 80%;
+  width: 75%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -27,21 +30,21 @@
 
 .pulsing {
   transform: scale(1);
-  animation: pulse-black 2s infinite;
-  box-shadow: 0 0 0 0 rgb(0, 0, 0);
+  animation: pulse-black 1s infinite;
+  box-shadow: 0 0 0 0 rgb(0, 210, 220);
 }
 
 @keyframes pulse-black {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 0 0 rgba(0, 210, 220, 0.7);
   }
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 10px rgba(0, 210, 220, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 210, 220, 0);
   }
 }/*# sourceMappingURL=ArrowPresentation.css.map */

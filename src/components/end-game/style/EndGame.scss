@@ -17,3 +17,15 @@
 .hideDiv{
     display: none;
 }
+
+#newGame{
+    width: 10%;
+    height: 5%;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    background-color: #00d2dc;
+    &:hover{
+        background-color: #06f3ff;
+    }
+}

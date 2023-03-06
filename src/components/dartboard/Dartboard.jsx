@@ -7,7 +7,7 @@ import {
   setNumberOfShot,
 } from "../../store/PlayerSlice";
 import { useDispatch, useSelector } from "react-redux";
-import valueOfArray from "../../cricket-game/valueOfArray";
+import AwardingPointLogic from "../../cricket-game/AwardingPointLogic";
 import checkWinner from "../../cricket-game/checkWinner";
 import { useNavigate } from "react-router-dom";
 
@@ -46,7 +46,7 @@ function Dartboard(props) {
     }
 
 
-    const result = valueOfArray(currentPlayer, e.target.id);
+    const result = AwardingPointLogic(currentPlayer, e.target.id);
     if (!!result) {
       const idOfField = e.target.id;
       const idOfCurrentPlayer = currentPlayer.id;
@@ -85,20 +85,6 @@ function Dartboard(props) {
       );
     }    
   };
-
-  // const setNumberOfHitsAndPlayer = () => {
-
-  //   if (numberOfShot === 3) {
-  //     dispatch(setNumberOfShot(1));
-  //     if (counterForPlayer === gameState.present.player.length - 1) {
-  //       setCounterForPlayer(0);
-  //     } else {
-  //       setCounterForPlayer(counterForPlayer + 1);
-  //     }
-  //   } else {
-  //     dispatch(setNumberOfShot(numberOfShot + 1));
-  //   }
-  // }
 
   return (
     <section id="dartboard">

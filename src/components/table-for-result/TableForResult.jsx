@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style/TableForResult.css";
 import { useSelector } from "react-redux";
 import ArrowPresentation from "../arrow-presentation/ArrowPresentation";

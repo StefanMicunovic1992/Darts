@@ -1,4 +1,5 @@
 #UndoRedoResetButtons {
+  border-top: 3px solid #edeef3;
   width: 100%;
   height: 100%;
   display: flex;
@@ -8,9 +9,10 @@
 #UndoRedoResetButtons button {
   width: 20%;
   height: 30%;
+  border: 5px solid #edeef3;
   border-radius: 5px;
 }
 #UndoRedoResetButtons button:hover {
-  transition: 0.3s;
-  border: 1px solid turquoise;
+  border: 3px solid #00d2dc;
+  color: #00d2dc;
 }/*# sourceMappingURL=UndoRedoResetButtons.css.map */
