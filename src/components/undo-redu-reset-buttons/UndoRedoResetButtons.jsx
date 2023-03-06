@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import getGameState from '../../store/selectors/getGameState';
@@ -11,10 +11,6 @@ function UndoRedoResetButtons() {
   const history = useNavigate();
   const dispatch = useDispatch();
 
-useEffect(()=>{
-console.log('promena stanja iz iz zadnje komponente',gameState)
-},[gameState])
-
   const resetGame = () => {
       window.location.reload();
       history("/");
@@ -24,7 +20,6 @@ console.log('promena stanja iz iz zadnje komponente',gameState)
     if(gameState.past.length > 3){
       dispatch(ActionCreators.jump(-3));
     }
-    // console.log(gameState)
   };
 
   const redoFnc2 = () => {

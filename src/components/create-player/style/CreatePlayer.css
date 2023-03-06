@@ -14,14 +14,15 @@
 }
 #createPlayer #inputAndBtn {
   background-color: rgba(103, 92, 92, 0.5);
-  width: 500px;
-  height: 400px;
+  width: 50%;
+  height: 50%;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: first baseline;
   align-items: center;
   gap: 30px;
+  padding: 30px;
 }
 #createPlayer #inputAndBtn #inputDiv {
   width: 100%;

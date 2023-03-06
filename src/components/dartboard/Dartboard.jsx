@@ -1,31 +1,24 @@
 import React, { useEffect } from "react";
 import "./style/Dartboard.css";
-import {
-  setHits,
-  setHitsForOtherPlayer,
-  setWinner,
-  setNumberOfShot,
-} from "../../store/PlayerSlice";
+import { setHits, setHitsForOtherPlayer, setWinner,setNumberOfShot} from "../../store/PlayerSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import getCurrentPlayer from "../../store/selectors/getCurrentPlayer";
 import AwardingPointLogic from "../../cricket-game/AwardingPointLogic";
 import checkWinner from "../../cricket-game/checkWinner";
-import { useNavigate } from "react-router-dom";
 
 function Dartboard(props) {
 
   const gameState = useSelector((state) => state.game);
   const numberOfShot = useSelector((state) => state.game.present.numberOfShot);
-  const currentPlayer = useSelector((state) => state.game.present.currentPlayer);
+  const currentPlayer = useSelector(getCurrentPlayer);
   const dispatch = useDispatch();
   const history = useNavigate();
 
   useEffect(()=>{
-    console.log('promenjen game state',gameState)
-    console.log('stanje currentPlayera iz useEffecta kod promene celog state-a',currentPlayer)
     const winner = checkWinner(gameState, currentPlayer,);
     if(winner){
       dispatch(setWinner(currentPlayer))
-      console.log('imamo pobednika',winner)
     }
   },[gameState])
   
@@ -41,10 +34,10 @@ function Dartboard(props) {
   };
 
   const onBoardHit = (e) => {
+
     if(numberOfShot === 0){
       return;
     }
-
 
     const result = AwardingPointLogic(currentPlayer, e.target.id);
     if (!!result) {
@@ -90,7 +83,6 @@ function Dartboard(props) {
     <section id="dartboard">
       <svg
         onClick={(e) => onBoardHit(e)}
-        // onClick={(e) => props.onDashboardHit(e)}
         data-v-6310035b=""
         id="dartboard"
         version="1.1"
