@@ -8,6 +8,7 @@ import getGameState from "../../store/selectors/getGameState";
 import getPlayers from "../../store/selectors/getPlayers";
 
 function CreatePlayer() {
+  
   const MIN_PLAYER_FOR_GAME = 2;
   const MAX_PLAYER_FOR_GAME = 4;
 
@@ -50,7 +51,9 @@ function CreatePlayer() {
 
   const handleChangeInputName = (e) => setInputNameValue(e.target.value);
 
-  const playGameFnc = () => { history("/game"); };
+  const playGameFnc = () => {
+    history("/game"); 
+    };
 
   return (
     <section id="createPlayer">

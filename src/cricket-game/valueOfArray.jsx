@@ -1,6 +1,5 @@
 const valueOfArray = (currentPlayer, id) => {
-  console.log("valueOfArray", currentPlayer)
-  console.log("ID", id)
+  console.log(currentPlayer)
 
   if (
     id.indexOf("15") > -1 ||
@@ -32,7 +31,6 @@ const valueOfArray = (currentPlayer, id) => {
         }
       }
       case 17: {
-        console.log('ulazi u 17')
         const resultOfChacking = checkValue(currentPlayer.cricketPoints.point17, valueOfIdConvertToPoint, numberInId) 
         return {
             valueOfId: valueOfIdConvertToPoint,

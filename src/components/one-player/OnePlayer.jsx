@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import "./style/OnePlayer.css";
 
 function OnePlayer(props) {
+  const currentPlayer = useSelector((state) => state.game.present.currentPlayer);
+  const myRef = useRef(null);
+  useEffect(()=>{
+    if(currentPlayer.id === props.player.id){
+      myRef.current.className = 'current';
+    }else{
+      myRef.current.className = 'onePlayer';
+    }
+  },[currentPlayer])
 
   const renderNumberOfHitsPerField = (data, num) => {
     if (num !== 50) {
@@ -26,16 +36,16 @@ function OnePlayer(props) {
   };
 
   return (
-    <div className="onePlayer">
+    <div className="onePlayer" ref={myRef}>
       <div className="resultPerPlayer">
         <h4>{props.player.name} : {props.player.point}</h4>
-        {renderNumberOfHitsPerField(props.player.point15, 15)}
-        {renderNumberOfHitsPerField(props.player.point16, 16)}
-        {renderNumberOfHitsPerField(props.player.point17, 17)}
-        {renderNumberOfHitsPerField(props.player.point18, 18)}
-        {renderNumberOfHitsPerField(props.player.point19, 19)}
-        {renderNumberOfHitsPerField(props.player.point20, 20)}
-        {renderNumberOfHitsPerField(props.player.bull, 50)}
+        {renderNumberOfHitsPerField(props.player.cricketPoints.point15, 15)}
+        {renderNumberOfHitsPerField(props.player.cricketPoints.point16, 16)}
+        {renderNumberOfHitsPerField(props.player.cricketPoints.point17, 17)}
+        {renderNumberOfHitsPerField(props.player.cricketPoints.point18, 18)}
+        {renderNumberOfHitsPerField(props.player.cricketPoints.point19, 19)}
+        {renderNumberOfHitsPerField(props.player.cricketPoints.point20, 20)}
+        {renderNumberOfHitsPerField(props.player.cricketPoints.bull, 50)}
       </div>
     </div>
   );

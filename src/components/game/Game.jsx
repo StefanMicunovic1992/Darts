@@ -1,12 +1,11 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Dartboard from "../dartboard/Dartboard";
+import EndGame from "../end-game/EndGame";
 import TableForResult from "../table-for-result/TableForResult";
 import "./style/Game.css";
 
-
 function Game() {
-
   
 
   // const onDashboardHit = (value) => {
@@ -17,6 +16,7 @@ function Game() {
     <section id="gamePage">
       <Dartboard />
       <TableForResult />
+      <EndGame/>
     </section>
   );
 }

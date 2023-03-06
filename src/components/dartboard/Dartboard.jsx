@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./style/Dartboard.css";
 import {
   setHits,
   setHitsForOtherPlayer,
-  setCurrentPlayer,
-  setNumberOfHitsForCurrentPlayer,
   setWinner,
   setNumberOfShot,
 } from "../../store/PlayerSlice";
@@ -16,14 +14,20 @@ import { useNavigate } from "react-router-dom";
 function Dartboard(props) {
 
   const gameState = useSelector((state) => state.game);
-  const numberOfShot = useSelector((state) => state.game.present.numberOfShot)
+  const numberOfShot = useSelector((state) => state.game.present.numberOfShot);
+  const currentPlayer = useSelector((state) => state.game.present.currentPlayer);
   const dispatch = useDispatch();
   const history = useNavigate();
 
-  console.log(gameState)
-  
-  const [counterForPlayer, setCounterForPlayer] = useState(0);
-  const currentPlayer = gameState.present.player[counterForPlayer];
+  useEffect(()=>{
+    console.log('promenjen game state',gameState)
+    console.log('stanje currentPlayera iz useEffecta kod promene celog state-a',currentPlayer)
+    const winner = checkWinner(gameState, currentPlayer,);
+    if(winner){
+      dispatch(setWinner(currentPlayer))
+      console.log('imamo pobednika',winner)
+    }
+  },[gameState])
   
   useEffect(() => {
     checkNumberOfPlayer();
@@ -36,16 +40,12 @@ function Dartboard(props) {
     }
   };
 
-
-  useEffect(() => {
-    console.log("trenutni igrac", currentPlayer);
-    dispatch(setCurrentPlayer(currentPlayer.id));
-  }, [currentPlayer]);
-
-
   const onBoardHit = (e) => {
+    if(numberOfShot === 0){
+      return;
+    }
 
-    
+
     const result = valueOfArray(currentPlayer, e.target.id);
     if (!!result) {
       const idOfField = e.target.id;
@@ -53,13 +53,7 @@ function Dartboard(props) {
       sendDataToDispatch(result, idOfField, idOfCurrentPlayer);
     }
 
-    const winner = checkWinner(gameState, currentPlayer);
-    console.log('trenutni igrac pre ulaska u winner funckiju',currentPlayer)
-    if (!!winner) {
-      console.log("imamo pobednika", winner);
-    }
-
-    setNumberOfHitsAndPlayer()
+    dispatch(setNumberOfShot(1))
   };
 
   const sendDataToDispatch =  (result, idOfField, idOfCurrentPlayer) => {
@@ -89,22 +83,22 @@ function Dartboard(props) {
           idOfCurrentPlayer,
         })
       );
-    }
+    }    
   };
 
-  const setNumberOfHitsAndPlayer = () => {
+  // const setNumberOfHitsAndPlayer = () => {
 
-    if (numberOfShot === 3) {
-      dispatch(setNumberOfShot(1));
-      if (counterForPlayer === gameState.present.player.length - 1) {
-        setCounterForPlayer(0);
-      } else {
-        setCounterForPlayer(counterForPlayer + 1);
-      }
-    } else {
-      dispatch(setNumberOfShot(numberOfShot + 1));
-    }
-  }
+  //   if (numberOfShot === 3) {
+  //     dispatch(setNumberOfShot(1));
+  //     if (counterForPlayer === gameState.present.player.length - 1) {
+  //       setCounterForPlayer(0);
+  //     } else {
+  //       setCounterForPlayer(counterForPlayer + 1);
+  //     }
+  //   } else {
+  //     dispatch(setNumberOfShot(numberOfShot + 1));
+  //   }
+  // }
 
   return (
     <section id="dartboard">
