@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import undoable, { ActionCreators } from "redux-undo";
-import { isEqual } from "lodash";
+import { filter, isEqual } from "lodash";
 
 const gameSlice = createSlice({
   name: "game",

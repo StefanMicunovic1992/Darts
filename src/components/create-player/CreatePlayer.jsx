@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style/CreatePlayer.css";
 import { useSelector, useDispatch } from "react-redux";
 import { ActionCreators } from "redux-undo";
@@ -19,6 +19,10 @@ function CreatePlayer() {
 
   const gameState = useSelector(getGameState);
   const players = useSelector(getPlayers);
+
+  useEffect(()=>{
+console.log(gameState)
+  },[gameState])
 
   const createPlayerFnc = () => {
     if (inputNameValue) {
@@ -42,7 +46,6 @@ function CreatePlayer() {
 
   const undoFnc = () => {
     dispatch(ActionCreators.undo());
-    console.log(gameState);
   };
 
   const redoFnc = () => {

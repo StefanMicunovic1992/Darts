@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import "./style/OnePlayer.css";
 
-function OnePlayer(props) {
+function PlayerResult(props) {
   const currentPlayer = useSelector((state) => state.game.present.currentPlayer);
   const myRef = useRef(null);
   useEffect(()=>{
@@ -51,4 +51,4 @@ function OnePlayer(props) {
   );
 }
 
-export default OnePlayer;
+export default PlayerResult;
